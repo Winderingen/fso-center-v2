@@ -1,0 +1,36 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { dispatch } from '../supabase/functions/_shared/domain.mjs';
+import { seed } from '../supabase/functions/_shared/seed.mjs';
+import { materialSearchText, renderMaterial } from '../site/js/materials.js';
+const admin={admin:true,pepper:'parts-test',client:'admin'},guest={...admin,admin:false};
+const document=()=>({section:'legislation',title:'Кодекс',published:true,groups:[{title:'Раздел 1',articles:[{num:'1',title:'Статья 1',text:'Общее положение',important:true,parts:[{num:'1',title:'Полномочия',text:'Текст первой части'},{num:'2',title:'',text:'Текст второй части'}]}]}]});
+test('article parts persist in order, appear in pinned articles and are searchable',async()=>{
+  const state=seed(),saved=await dispatch(state,'admin.saveMaterial',document(),admin);
+  const parts=saved.groups[0].articles[0].parts;
+  assert.ok(parts.every(p=>p.id));
+  assert.deepEqual(parts.map(p=>p.num),['1','2']);
+  const restored=JSON.parse(JSON.stringify(state));
+  const published=(await dispatch(restored,'catalog',{},guest)).materials.find(m=>m.id===saved.id);
+  assert.deepEqual(published.groups[0].articles[0].parts,parts);
+  assert.ok(materialSearchText(published).includes('Текст второй части'));
+  const html=renderMaterial(published);
+  assert.equal(html.split('<h5>1 — Полномочия</h5>').length-1,2);
+  assert.ok(html.includes('<h5>2</h5>'));
+  const updated=structuredClone(saved);
+  updated.groups[0].articles[0].parts.reverse();
+  const reordered=await dispatch(restored,'admin.saveMaterial',updated,admin);
+  assert.deepEqual(reordered.groups[0].articles[0].parts.map(p=>p.id),parts.map(p=>p.id).reverse());
+});
+test('incomplete parts can be drafted but published parts require number and text',async()=>{
+  const state=seed(),input=document();
+  input.groups[0].articles[0].parts=[{num:'',text:''}];
+  await assert.rejects(dispatch(state,'admin.saveMaterial',input,admin),/Номер части/);
+  input.published=false;
+  const saved=await dispatch(state,'admin.saveMaterial',input,admin);
+  assert.equal((await dispatch(state,'catalog',{},guest)).materials.some(m=>m.id===saved.id),false);
+  saved.published=true;saved.groups[0].articles[0].parts[0].num='1';
+  await assert.rejects(dispatch(state,'admin.saveMaterial',saved,admin),/Текст части/);
+  saved.groups[0].articles[0].parts[0].text='Заполнено';
+  assert.equal((await dispatch(state,'admin.saveMaterial',saved,admin)).published,true);
+});

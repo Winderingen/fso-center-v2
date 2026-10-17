@@ -1,0 +1,3 @@
+[functions.fso-api]
+verify_jwt = false
+# Public catalog/exam operations are allowed; admin JWTs are verified in code.

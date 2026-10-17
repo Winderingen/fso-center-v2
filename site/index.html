@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Справочно-экзаменационная система Управления ФСО РФ по АФО</title>
+  <meta name="description" content="Справочник, подготовка и экзамены игровой организации ФСО">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/trial.css">
+  <link rel="stylesheet" href="css/materials.css">
+  <link rel="stylesheet" href="css/features.css">
+  <link rel="stylesheet" href="css/identity.css">
+  <link rel="icon" type="image/svg+xml" href="assets/emblem.svg">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="logo" href="#home"><img class="brand-emblem" src="assets/emblem.svg" alt="Эмблема учебного центра"><div><div class="logo-text">ФСО РФ</div><div class="logo-sub">Управление по АФО</div></div></a>
+    <nav class="nav" aria-label="Главное меню">
+      <a class="nav-item" href="#home">⌂ <span>Главная</span></a>
+      <div class="nav-section">Справочный центр</div>
+      <a class="nav-item" href="#legislation">⚖ <span>Законодательство</span></a>
+      <a class="nav-item" href="#charter">▤ <span>Устав организации</span></a>
+      <a class="nav-item" href="#instructions">☷ <span>Служебные инструкции</span></a>
+      <a class="nav-item" href="#structure">◇ <span>Структура</span></a>
+      <div class="nav-section">Экзаменационный отдел</div>
+      <a class="nav-item" href="#tests">▣ <span>Тренировочные тесты</span></a>
+      <a class="nav-item" href="#exams">◎ <span>Экзамены</span></a>
+      <div class="nav-section">Администрирование</div>
+      <a class="nav-item" href="#admin">⚙ <span>Кабинет администратора</span></a>
+    </nav>
+    <div class="user-bar"><div class="avatar">Ф</div><div class="user-info"><div class="user-name" id="userName">Посетитель</div><div class="user-role" id="userRole">Открытый доступ</div></div></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="topbar-title"><strong>Справочно-экзаменационная система</strong><span>Управление ФСО РФ по АФО</span></div><span id="modeBadge" class="pill">Пробная версия</span></header>
+    <div class="content" id="contentArea" aria-live="polite"><p>Загрузка центра…</p></div>
+    <footer class="site-credit"><span>Управление ФСО РФ по АФО · игровая организация</span><span>created by <strong>Miklosh Bulava</strong></span></footer>
+  </main>
+  <div class="modal-overlay" id="modalOverlay"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-header"><h3 id="modalTitle"></h3><button class="modal-close" id="modalClose" aria-label="Закрыть">×</button></div><div class="modal-body" id="modalBody"></div></section></div>
+  <div id="notifications" aria-live="polite"></div>
+  <script src="config.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

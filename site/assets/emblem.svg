@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 280" fill="none">
+  <defs><linearGradient id="gold" x1="35" y1="15" x2="210" y2="260" gradientUnits="userSpaceOnUse"><stop stop-color="#F1DBA1"/><stop offset=".45" stop-color="#C6A468"/><stop offset="1" stop-color="#866235"/></linearGradient><linearGradient id="navy" x1="60" y1="30" x2="180" y2="240"><stop stop-color="#213A4D"/><stop offset="1" stop-color="#0A1724"/></linearGradient></defs>
+  <path d="M120 17 201 47v93c0 55-34 89-81 122-47-33-81-67-81-122V47Z" fill="url(#navy)" stroke="url(#gold)" stroke-width="3"/>
+  <path d="M120 30 190 56v83c0 46-27 77-70 108-43-31-70-62-70-108V56Z" stroke="url(#gold)" stroke-opacity=".45"/>
+  <g stroke="url(#gold)" stroke-width="2" stroke-linecap="round"><path d="M77 213c-30-27-46-56-51-91M163 213c30-27 46-56 51-91"/>
+  <path d="m34 155-17-14 4 22 17 11m-10-48-14-12 2 21 17 14m12 34-18-7 8 22 18 5m8 5-18-1 14 19 17-2m151-64 17-14-4 22-17 11m10-48 14-12-2 21-17 14m-12 34 18-7-8 22-18 5m-8 5 18-1-14 19-17-2"/>
+  </g>
+  <path d="m120 56 10 24 26 2-20 17 6 26-22-14-22 14 6-26-20-17 26-2Z" fill="url(#gold)"/>
+  <path d="M72 143c18-4 31-1 48 8 17-9 30-12 48-8v46c-18-4-31-1-48 8-17-9-30-12-48-8Z" fill="#102333" stroke="url(#gold)" stroke-width="2"/>
+  <path d="M120 151v46m-36-41 24 7m-24 4 24 7m24-11 24-7m-24 18 24-7" stroke="url(#gold)" stroke-width="2" stroke-linecap="round"/>
+  <path d="m110 217 10 6 10-6" stroke="url(#gold)" stroke-width="2"/>
+</svg>
